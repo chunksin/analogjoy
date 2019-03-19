@@ -37,7 +37,7 @@ def ReadChannel(channel):
 device=uinput.Device([uinput.BTN_JOYSTICK,
                       uinput.ABS_WHEEL+(0,1023,0,0),
                       uinput.ABS_GAS+(0,1023,0,0),
-					  uinput.ABS_BRAKE+(0,1023,0,0)
+		      uinput.ABS_BRAKE+(0,1023,0,0)
                       ])
 
 
