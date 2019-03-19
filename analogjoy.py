@@ -52,8 +52,9 @@ while True:
     device.emit(uinput.ABS_WHEEL,joy_x_value,syn=True)
     joy_y_value=ReadChannel(joy_y)
     device.emit(uinput.ABS_GAS,joy_y_value,syn=True)
-	joy_z_value=ReadChannel(joy_z)
+    joy_z_value=ReadChannel(joy_z)
     device.emit(uinput.ABS_BRAKE,joy_z_value,syn=True)
+# Poll interval - set here to 10ms, you can reduce it but keep an eye on your CPU!
     time.sleep(0.010)
 
 except KeyboardInterrupt:
