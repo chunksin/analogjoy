@@ -66,7 +66,7 @@ if mode==3:
 					  
 # Main polling loop for analog inputs
 while True:
-  if driver==1:
+  if mode==1:
     joy_x_value=ReadChannel(joy1_x_channel)
     device.emit(uinput.ABS_WHEEL,joy_x_value,syn=True)
     joy_y_value=ReadChannel(joy1_y_channel)
@@ -74,13 +74,13 @@ while True:
     joy_z_value=ReadChannel(joy1_z_channel)
     device.emit(uinput.ABS_BRAKE,joy_z_value,syn=True)
     time.sleep(0.010)
-  if sticks==1:
+  if mode==2:
     joy1_x_value=ReadChannel(joy1_x_channel)
     device.emit(uinput.ABS_X,joy1_x_value,syn=True)
     joy1_y_value=ReadChannel(joy1_y_channel)
     device.emit(uinput.ABS_Y,joy1_y_value,syn=True)
     time.sleep(0.010)
-  if sticks==2:
+  if mode==3:
     joy1_x_value=ReadChannel(joy1_x_channel)
     device1.emit(uinput.ABS_X,joy1_x_value,syn=True)
     joy1_y_value=ReadChannel(joy1_y_channel)
