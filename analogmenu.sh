@@ -244,7 +244,7 @@ twojoy_menu () {
 	--help-button \
     --cancel-label "Main Menu" \
     --menu "Please select: (*) = current setting" $HEIGHT $WIDTH 8 \
-    "1" "Enable Two Joysticks (X/Y-axis)" \
+        "1" "Enable Two Joysticks (X/Y-axis)" \
 	"2" "Configure Joy1 X-axis Pin (A0 Default)" \
 	"3" "Configure Joy1 Y-axis Pin (A1 Default)" \
 	"4" "Configure Joy2 X-axis Pin (A2 Default)" \
@@ -265,23 +265,23 @@ twojoy_menu () {
       clear
       echo "Program terminated."
       ;;
-	"HELP 1" )
+    "HELP 1" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option will enable two 2-axis joysticks using the Analog Zero board" 0 0
       ;;
-	"HELP 2" )
+    "HELP 2" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option will set the analog pin on the Analog Zero board used for the joystick 1 x-axis" 0 0
       ;;
-	"HELP 3" )
+    "HELP 3" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option will set the analog pin on the Analog Zero board used for the joystick 1 y-axis" 0 0
       ;;
-	"HELP 3" )
+    "HELP 3" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option will set the analog pin on the Analog Zero board used for the joystick 2 x-axis" 0 0
       ;;
-	"HELP 4" )
+     "HELP 4" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option will set the analog pin on the Analog Zero board used for the joystick 2 y-axis" 0 0
       ;;
@@ -293,34 +293,34 @@ twojoy_menu () {
       ;;
     2 )
       input=$(dialog --stdout --inputbox "Please Enter X-Axis Pin Number" 0 0)
-	  retval=$?
-	  joy1_x_channel=$input
-	  menu_update "joy1_x_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 1 X-Axis Pin Updated to $input" 0 0
+      retval=$?
+      joy1_x_channel=$input
+      menu_update "joy1_x_channel" $input
+      dialog --title "$1" --no-collapse --msgbox "Joy 1 X-Axis Pin Updated to $input" 0 0
       return 0
       ;;
     3 )
       input=$(dialog --stdout --inputbox "Please Enter Y-Axis Pin Number" 0 0)
-	  retval=$?
-	  joy1_y_channel=$input
-	  menu_update "joy1_y_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 1 Y-Axis Pin Updated to $input" 0 0
+      retval=$?
+      joy1_y_channel=$input
+      menu_update "joy1_y_channel" $input
+      dialog --title "$1" --no-collapse --msgbox "Joy 1 Y-Axis Pin Updated to $input" 0 0
       return 0
       ;;
-	4 )
+    4 )
       input=$(dialog --stdout --inputbox "Please Enter X-Axis Pin Number" 0 0)
-	  retval=$?
-	  joy2_x_channel=$input
-	  menu_update "joy2_x_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 2 X-Axis Pin Updated to $input" 0 0
+      retval=$?
+      joy2_x_channel=$input
+      menu_update "joy2_x_channel" $input
+      dialog --title "$1" --no-collapse --msgbox "Joy 2 X-Axis Pin Updated to $input" 0 0
       return 0
       ;;
     5 )
       input=$(dialog --stdout --inputbox "Please Enter Y-Axis Pin Number" 0 0)
-	  retval=$?
-	  joy2_y_channel=$input
-	  menu_update "joy2_y_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 2 Y-Axis Pin Updated to $input" 0 0
+      retval=$?
+      joy2_y_channel=$input
+      menu_update "joy2_y_channel" $input
+      dialog --title "$1" --no-collapse --msgbox "Joy 2 Y-Axis Pin Updated to $input" 0 0
       return 0
       ;;
   esac
@@ -356,28 +356,28 @@ adjust_menu () {
       clear
       echo "Program terminated."
       ;;
-	"HELP 1" )
+    "HELP 1" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option configures the noise setting if your inputs are not stable - increase the value to stabilise the readings" 0 0
       ;;
-	"HELP 2" )
+    "HELP 2" )
       #clear
       dialog --title "$1" --no-collapse --msgbox "This option configures the deadzone setting for your controls, the value entered is a percentage of total range" 0 0
       ;;
     1 )
       input=$(dialog --stdout --inputbox "Please Enter Noise Setting" 0 0)
-	  retval=$?
-	  fuzz=$input
-	  menu_update "fuzz" $input
-	  dialog --title "$1" --no-collapse --msgbox "Noise Setting Updated to $input" 0 0
+      retval=$?
+      fuzz=$input
+      menu_update "fuzz" $input
+      dialog --title "$1" --no-collapse --msgbox "Noise Setting Updated to $input" 0 0
       return 0
       ;;
     2 )
       input=$(dialog --stdout --inputbox "Please Enter Deadzone Setting" 0 0)
-	  retval=$?
-	  deadzone=$input
-	  menu_update "deadzone" $input
-	  dialog --title "$1" --no-collapse --msgbox "Deadzone Setting Updated to $input" 0 0
+      retval=$?
+      deadzone=$input
+      menu_update "deadzone" $input
+      dialog --title "$1" --no-collapse --msgbox "Deadzone Setting Updated to $input" 0 0
       return 0
       ;;
   esac
@@ -428,11 +428,11 @@ while true; do
     3 )
       onejoy_menu
       ;;
-	4 )
-	  twojoy_menu
+    4 )
+      twojoy_menu
       ;;
-	5 )
-	  adjust_menu
+    5 )
+      adjust_menu
       ;;
   esac 
 done
