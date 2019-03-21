@@ -18,10 +18,14 @@ if enabled==0:
 
 # Function for toggle shifter button press
 def button_callback(channel):
-	if GPIO.input(shifterpin):
-	  device.emit(uinput.BTN_JOYSTICK,1)
-	else:
-	  device.emit(uinput.BTN_JOYSTICK,1)
+    if GPIO.input(shifterpin):
+      device.emit(uinput.BTN_JOYSTICK,1)
+      time.sleep(0.1)
+      device.emit(uinput.BTN_JOYSTICK,0)
+    else:
+      device.emit(uinput.BTN_JOYSTICK,1)
+      time.sleep(0.1)
+      device.emit(uinput.BTN_JOYSTICK,0)
 
 # Initialise GPIO for button
 if driver and toggleshift:
