@@ -158,7 +158,8 @@ fi
 	  retval=$?
 	  shifterpin=$input
 	  menu_update "shifterpin" $input
-	  dialog --title "$1" --no-collapse --msgbox "GPIO Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "GPIO Pin Updated to $input" 0 0
+      return 0
       ;;
   esac
 done
@@ -217,14 +218,16 @@ onejoy_menu () {
 	  retval=$?
 	  joy1_x_channel=$input
 	  menu_update "joy1_x_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "X-Axis Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "X-Axis Pin Updated to $input" 0 0
+      return 0
       ;;
     3 )
       input=$(dialog --stdout --inputbox "Please Enter Y-Axis Pin Number" 0 0)
 	  retval=$?
 	  joy1_y_channel=$input
 	  menu_update "joy1_y_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Y-Axis Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Y-Axis Pin Updated to $input" 0 0
+      return 0
       ;;
   esac
 done
@@ -293,28 +296,32 @@ twojoy_menu () {
 	  retval=$?
 	  joy1_x_channel=$input
 	  menu_update "joy1_x_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 1 X-Axis Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Joy 1 X-Axis Pin Updated to $input" 0 0
+      return 0
       ;;
     3 )
       input=$(dialog --stdout --inputbox "Please Enter Y-Axis Pin Number" 0 0)
 	  retval=$?
 	  joy1_y_channel=$input
 	  menu_update "joy1_y_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 1 Y-Axis Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Joy 1 Y-Axis Pin Updated to $input" 0 0
+      return 0
       ;;
 	4 )
       input=$(dialog --stdout --inputbox "Please Enter X-Axis Pin Number" 0 0)
 	  retval=$?
 	  joy2_x_channel=$input
 	  menu_update "joy2_x_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 2 X-Axis Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Joy 2 X-Axis Pin Updated to $input" 0 0
+      return 0
       ;;
     5 )
       input=$(dialog --stdout --inputbox "Please Enter Y-Axis Pin Number" 0 0)
 	  retval=$?
 	  joy2_y_channel=$input
 	  menu_update "joy2_y_channel" $input
-	  dialog --title "$1" --no-collapse --msgbox "Joy 2 Y-Axis Pin Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Joy 2 Y-Axis Pin Updated to $input" 0 0
+      return 0
       ;;
   esac
 done
@@ -362,14 +369,16 @@ adjust_menu () {
 	  retval=$?
 	  fuzz=$input
 	  menu_update "fuzz" $input
-	  dialog --title "$1" --no-collapse --msgbox "Noise Setting Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Noise Setting Updated to $input" 0 0
+      return 0
       ;;
     2 )
       input=$(dialog --stdout --inputbox "Please Enter Deadzone Setting" 0 0)
 	  retval=$?
 	  deadzone=$input
 	  menu_update "deadzone" $input
-	  dialog --title "$1" --no-collapse --msgbox "Deadzone Setting Updated" 0 0
+	  dialog --title "$1" --no-collapse --msgbox "Deadzone Setting Updated to $input" 0 0
+      return 0
       ;;
   esac
 done
