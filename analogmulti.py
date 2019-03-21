@@ -10,7 +10,11 @@ import spidev
 import time
 import os
 import uinput
+import sys
 from myconfig import *
+
+if enabled==0:
+  sys.exit()
 
 # Function for toggle shifter button press
 def button_callback(channel):
@@ -39,22 +43,36 @@ def ReadChannel(channel):
   return data
 
 if mode==1:
-	# Set up uinput virtual device
+	# Set up uinput virtual device and begin polling for input
 	device = uinput.Device([uinput.BTN_JOYSTICK,
                       uinput.ABS_WHEEL+(0,1023,fuzz,deadzone),
                       uinput.ABS_GAS+(0,1023,fuzz,deadzone),
-					  uinput.ABS_BRAKE+(0,1023,fuzz,deadzone)
+                      uinput.ABS_BRAKE+(0,1023,fuzz,deadzone)
                       ])
+    while True:
+       joy_x_value=ReadChannel(joy1_x_channel)
+       device.emit(uinput.ABS_WHEEL,joy_x_value,syn=True)
+       joy_y_value=ReadChannel(joy1_y_channel)
+       device.emit(uinput.ABS_GAS,joy_y_value,syn=True)
+       joy_z_value=ReadChannel(joy1_z_channel)
+       device.emit(uinput.ABS_BRAKE,joy_z_value,syn=True)
+       time.sleep(0.010)
 
 if mode==2:
-	# Set up uinput virtual device
+	# Set up uinput virtual device and begin polling for input
 	device = uinput.Device([uinput.BTN_JOYSTICK,
                       uinput.ABS_X+(0,1023,fuzz,deadzone),
                       uinput.ABS_Y+(0,1023,fuzz,deadzone)
                       ])
-
+    while True:
+       joy1_x_value=ReadChannel(joy1_x_channel)
+       device.emit(uinput.ABS_X,joy1_x_value,syn=True)
+       joy1_y_value=ReadChannel(joy1_y_channel)
+       device.emit(uinput.ABS_Y,joy1_y_value,syn=True)
+       time.sleep(0.010)
+					  
 if mode==3:
-	# Set up uinput virtual devices
+	# Set up uinput virtual devices and begin polling for input
 	device1 = uinput.Device([uinput.BTN_JOYSTICK,
                       uinput.ABS_X+(0,1023,fuzz,deadzone),
                       uinput.ABS_Y+(0,1023,fuzz,deadzone)
@@ -63,34 +81,13 @@ if mode==3:
                       uinput.ABS_X+(0,1023,fuzz,deadzone),
                       uinput.ABS_Y+(0,1023,fuzz,deadzone)
                       ])
-					  
-# Main polling loop for analog inputs
-while True:
-  if mode==1:
-    joy_x_value=ReadChannel(joy1_x_channel)
-    device.emit(uinput.ABS_WHEEL,joy_x_value,syn=True)
-    joy_y_value=ReadChannel(joy1_y_channel)
-    device.emit(uinput.ABS_GAS,joy_y_value,syn=True)
-    joy_z_value=ReadChannel(joy1_z_channel)
-    device.emit(uinput.ABS_BRAKE,joy_z_value,syn=True)
-    time.sleep(0.010)
-  if mode==2:
-    joy1_x_value=ReadChannel(joy1_x_channel)
-    device.emit(uinput.ABS_X,joy1_x_value,syn=True)
-    joy1_y_value=ReadChannel(joy1_y_channel)
-    device.emit(uinput.ABS_Y,joy1_y_value,syn=True)
-    time.sleep(0.010)
-  if mode==3:
-    joy1_x_value=ReadChannel(joy1_x_channel)
-    device1.emit(uinput.ABS_X,joy1_x_value,syn=True)
-    joy1_y_value=ReadChannel(joy1_y_channel)
-    device1.emit(uinput.ABS_Y,joy1_y_value,syn=True)
-    joy2_x_value=ReadChannel(joy2_x_channel)
-    device2.emit(uinput.ABS_X,joy2_x_value,syn=True)
-    joy2_y_value=ReadChannel(joy2_y_channel)
-    device2.emit(uinput.ABS_Y,joy_y2_value,syn=True)
-    time.sleep(0.010)
-
-except KeyboardInterrupt:
-GPIO.cleanup()       # clean up GPIO on CTRL+C exit
-GPIO.cleanup()       # clean up GPIO on normal exit
+    while True:
+       joy1_x_value=ReadChannel(joy1_x_channel)
+       device1.emit(uinput.ABS_X,joy1_x_value,syn=True)
+       joy1_y_value=ReadChannel(joy1_y_channel)
+       device1.emit(uinput.ABS_Y,joy1_y_value,syn=True)
+       joy2_x_value=ReadChannel(joy2_x_channel)
+       device2.emit(uinput.ABS_X,joy2_x_value,syn=True)
+       joy2_y_value=ReadChannel(joy2_y_channel)
+       device2.emit(uinput.ABS_Y,joy_y2_value,syn=True)
+       time.sleep(0.010)
