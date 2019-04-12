@@ -11,3 +11,7 @@ toggleshift=1
 shifterpin=23
 mode=1
 enabled=1
+p1startpin=16
+p2startpin=20
+p1b1pin=19
+p2b1pin=21
