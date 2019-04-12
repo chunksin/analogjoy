@@ -6,7 +6,9 @@ This code sample shows how to create and output a joystick device in python read
 The analogmulti.py example reads in configurable variables from myconfig.py, that specifies what mode the script run in:
 
 1 = driver mode, a single controller with X/Y/Z axis and a single button for gear shift
-2 = single joystick mode, a single analog stick with X/Y axis and a single button
-3 = two joystick mode, two analog joysticks with X/Y axis and a single button each
+2 = single joystick mode, a single analog stick with X/Y axis with start and single button
+3 = two joystick mode, two analog joysticks with X/Y axis and a start and single button each
+
+The digital button inputs are implemented using GPIO interrupts for fastest response
 
 The file analogmenu.sh is a bash based dialog menu that updates the myconfig.py file based on options chosen
