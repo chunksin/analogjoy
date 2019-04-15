@@ -25,30 +25,30 @@ def shifter_callback(channel):
 # Function for player 1 start button press
 def p1start_callback(channel):
    if GPIO.input(p1b1pin):
-     device1.emit(uinput.BTN_START,1)
-   else:
      device1.emit(uinput.BTN_START,0)
+   else:
+     device1.emit(uinput.BTN_START,1)
 
 # Function for player 2 start button press
 def p2start_callback(channel):
    if GPIO.input(p2startpin):
-     device2.emit(uinput.BTN_START,1)
-   else:
      device2.emit(uinput.BTN_START,0)
+   else:
+     device2.emit(uinput.BTN_START,1)
 
 # Function for player 1 button 1 press
 def p1b1_callback(channel):
    if GPIO.input(p1b1pin):
-     device1.emit(uinput.BTN_1,1)
-   else:
      device1.emit(uinput.BTN_1,0)
+   else:
+     device1.emit(uinput.BTN_1,1)
 
 # Function for player 2 button 1 press
 def p2b1_callback(channel):
    if GPIO.input(p2b1pin):
-     device2.emit(uinput.BTN_1,1)
-   else:
      device2.emit(uinput.BTN_1,0)
+   else:
+     device2.emit(uinput.BTN_1,1)
 
 # Initialise GPIO for shifter button
 if mode==1 and toggleshift==1:
